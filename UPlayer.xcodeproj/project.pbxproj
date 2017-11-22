@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		E10653D71F72436500EC995F /* list.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D401F723E2D0041B69C /* list.plist */; };
-		E10653D81F7243A200EC995F /* asif.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D3F1F723E2C0041B69C /* asif.m4v */; };
-		E10653D91F7243A800EC995F /* gustas.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D3D1F723E2C0041B69C /* gustas.m4v */; };
-		E10653DA1F7243A800EC995F /* suki.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D3E1F723E2C0041B69C /* suki.m4v */; };
+		E12275931F8EFB4E0002E66E /* asif.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E12275911F8EFAD70002E66E /* asif.m4v */; };
+		E12275951F8EFB530002E66E /* suki.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E12275901F8EFAD70002E66E /* suki.m4v */; };
+		E16B070E1FC54AC20051A296 /* 456.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B070D1FC54AC20051A296 /* 456.mov */; };
+		E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07111FC54C2C0051A296 /* withoutu.mov */; };
+		E16B07141FC54D420051A296 /* likeit.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07131FC54D420051A296 /* likeit.mov */; };
 		E16CA7691F7CD236005844A4 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA7681F7CD236005844A4 /* Asset.swift */; };
 		E16CA76B1F7CD26E005844A4 /* AssetPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76A1F7CD26E005844A4 /* AssetPlaybackManager.swift */; };
 		E16CA76D1F7CD29B005844A4 /* RemoteCommandDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76C1F7CD29B005844A4 /* RemoteCommandDataSource.swift */; };
@@ -22,6 +24,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E12275901F8EFAD70002E66E /* suki.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = suki.m4v; sourceTree = "<group>"; };
+		E12275911F8EFAD70002E66E /* asif.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = asif.m4v; sourceTree = "<group>"; };
+		E16B070D1FC54AC20051A296 /* 456.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 456.mov; sourceTree = "<group>"; };
+		E16B07111FC54C2C0051A296 /* withoutu.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = withoutu.mov; sourceTree = "<group>"; };
+		E16B07131FC54D420051A296 /* likeit.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = likeit.mov; sourceTree = "<group>"; };
 		E16CA7681F7CD236005844A4 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		E16CA76A1F7CD26E005844A4 /* AssetPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPlaybackManager.swift; sourceTree = "<group>"; };
 		E16CA76C1F7CD29B005844A4 /* RemoteCommandDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommandDataSource.swift; sourceTree = "<group>"; };
@@ -33,9 +40,6 @@
 		E1CA2D021F723A2C0041B69C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1CA2D071F723A2C0041B69C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1CA2D091F723A2C0041B69C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1CA2D3D1F723E2C0041B69C /* gustas.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = gustas.m4v; sourceTree = "<group>"; };
-		E1CA2D3E1F723E2C0041B69C /* suki.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = suki.m4v; sourceTree = "<group>"; };
-		E1CA2D3F1F723E2C0041B69C /* asif.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = asif.m4v; sourceTree = "<group>"; };
 		E1CA2D401F723E2D0041B69C /* list.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = list.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,10 +99,12 @@
 		E1CA2D411F723E4C0041B69C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E1CA2D3F1F723E2C0041B69C /* asif.m4v */,
-				E1CA2D3D1F723E2C0041B69C /* gustas.m4v */,
+				E16B07131FC54D420051A296 /* likeit.mov */,
+				E16B07111FC54C2C0051A296 /* withoutu.mov */,
+				E16B070D1FC54AC20051A296 /* 456.mov */,
+				E12275911F8EFAD70002E66E /* asif.m4v */,
+				E12275901F8EFAD70002E66E /* suki.m4v */,
 				E1CA2D401F723E2D0041B69C /* list.plist */,
-				E1CA2D3E1F723E2C0041B69C /* suki.m4v */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -167,11 +173,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E10653D91F7243A800EC995F /* gustas.m4v in Resources */,
-				E10653DA1F7243A800EC995F /* suki.m4v in Resources */,
-				E10653D81F7243A200EC995F /* asif.m4v in Resources */,
+				E12275931F8EFB4E0002E66E /* asif.m4v in Resources */,
+				E16B070E1FC54AC20051A296 /* 456.mov in Resources */,
+				E12275951F8EFB530002E66E /* suki.m4v in Resources */,
 				E10653D71F72436500EC995F /* list.plist in Resources */,
+				E16B07141FC54D420051A296 /* likeit.mov in Resources */,
 				E1CA2D081F723A2C0041B69C /* LaunchScreen.storyboard in Resources */,
+				E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */,
 				E1CA2D031F723A2C0041B69C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

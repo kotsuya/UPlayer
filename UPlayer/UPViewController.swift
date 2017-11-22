@@ -152,6 +152,10 @@ class UPViewController: UIViewController {
         
         selectRow = 0
         self.playMusic()
+        
+        //回転したら
+        NotificationCenter.default.addObserver(self, selector: #selector(self.rotated), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        
     }
     
     deinit {
@@ -162,10 +166,37 @@ class UPViewController: UIViewController {
         notificationCenter.removeObserver(self, name: AssetPlaybackManager.previousTrackNotification, object: nil)
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func rotated(notification: NSNotification) {
+        // 現在のデバイスの向きを取得.
+        let deviceOrientation: UIDeviceOrientation!  = UIDevice.current.orientation
+        
+        var frameRect: CGRect = self.view.bounds
+        // 向きの判定.
+        if UIDeviceOrientationIsLandscape(deviceOrientation) {
+            resetButton.alpha = 0.0
+            plusButton.alpha = 0.0
+            repeatButton.alpha = 0.0
+        } else {//if UIDeviceOrientationIsPortrait(deviceOrientation){
+            frameRect = CGRect(x:0,
+                               y:barHeight,
+                               width:playerSizeWidth,
+                               height:playerSizeWidth)
+            resetButton.alpha = 1.0
+            plusButton.alpha = 1.0
+            repeatButton.alpha = 1.0
+        }
+        
+        for layer: CALayer in self.view.layer.sublayers! {
+            if layer is AVPlayerLayer {
+                (layer as! AVPlayerLayer).frame = frameRect
+                break
+            }
+        }
     }
     
     @objc func repeatButton(sender : UIButton) {
@@ -267,7 +298,8 @@ class UPViewController: UIViewController {
         guard let enumerator = FileManager.default.enumerator(at: Bundle.main.bundleURL, includingPropertiesForKeys: nil, options: [], errorHandler: nil) else { return }
         
         assets = enumerator.flatMap { element in
-            guard let url = element as? URL, url.pathExtension == "m4v", let list = list else { return nil }
+            guard let url = element as? URL, let list = list else { return nil }            
+            if url.pathExtension != "m4v" && url.pathExtension != "mov" { return nil }
             
             let value = url.lastPathComponent
             let dict = (list as Array).first(where: { $0["fileName"] as? String == value })
@@ -282,7 +314,7 @@ class UPViewController: UIViewController {
             return nil
         }
         
-        let tempDirectoryURL = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
+        let tempDirectoryURL = NSURL.fileURL(withPath: self.documentPath(), isDirectory: true)
         guard let enumerator2 = FileManager.default.enumerator(at: tempDirectoryURL, includingPropertiesForKeys: nil, options: [], errorHandler: nil) else { return }
         
         enumerator2.forEach { element in
@@ -298,7 +330,8 @@ class UPViewController: UIViewController {
         // Get the file path in the bundle
         if let bundleURL = Bundle.main.url(forResource: resourceName, withExtension: fileExtension) {
             
-            let tempDirectoryURL = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
+            //let tempDirectoryURL = NSURL.fileURL(withPath: NSTemporaryDirectory(), isDirectory: true)
+            let tempDirectoryURL = NSURL.fileURL(withPath: self.documentPath(), isDirectory: true)
             
             // Create a destination URL.
             let targetURL = tempDirectoryURL.appendingPathComponent("\(resourceName).\(fileExtension)")
@@ -317,6 +350,10 @@ class UPViewController: UIViewController {
         }
         
         return nil
+    }
+    
+    func documentPath() -> String {
+        return "\(NSHomeDirectory())/Documents"
     }
     
     @objc func accessoryButtonTapped(sender:UIButton) {
@@ -450,7 +487,11 @@ extension UPViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "LIST (\(selectRow+1) / \(assets.count))"
+        if selectRow > 0 {
+            return "LIST (\(selectRow+1) / \(assets.count))"
+        } else {
+            return "0"
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -516,33 +557,17 @@ extension UPViewController : UIImagePickerControllerDelegate, UINavigationContro
         let mediaType: String = info[UIImagePickerControllerMediaType] as! String
         if mediaType == kUTTypeMovie as String, let url = info[UIImagePickerControllerMediaURL] as? URL {
             print("url : \(String(describing: url))")
+
+           let tmpUrl = URL(fileURLWithPath: "\(self.documentPath())/\(url.lastPathComponent)")
             
-            self.showEditAlert(picker, url:url, editMode: kEditMode)
+            // Copy the file.
+            do {
+                try FileManager.default.copyItem(at: url, to: tmpUrl)
+                self.showEditAlert(picker, url:tmpUrl, editMode: kEditMode)
+            } catch let error as NSError {
+                NSLog("Unable to copy file: \(error)")
+            }
         }
-    }
-    
-    func copy(_ fromPath: String , toPath: String) -> Bool {
-        var error: NSError?
-        do {
-            try FileManager.default.copyItem(atPath: fromPath, toPath: toPath)
-        } catch let error1 as NSError {
-            error = error1
-            NSLog("Copy Recorded auido file failed: \(String(describing: error?.localizedDescription))")
-            return false
-        }
-        return true
-    }
-    
-    func move(_ fromPath: String , toPath: String) -> Bool {
-        var error: NSError?
-        do {
-            try FileManager.default.moveItem(atPath: fromPath, toPath: toPath)
-        } catch let error1 as NSError {
-            error = error1
-            NSLog("Move Recorded auido file failed: \(String(describing: error?.localizedDescription))")
-            return false
-        }
-        return true
     }
 }
 
