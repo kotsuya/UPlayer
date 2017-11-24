@@ -22,12 +22,13 @@ class UPViewController: UIViewController {
     var playerSizeWidth:CGFloat = 0.0
     
     private var seekBar : UISlider!
-    private var resetButton: UIButton! = nil
+    private var playButton: UIButton! = nil
     private var plusButton: UIButton! = nil
     private var repeatButton: UIButton! = nil
     
     private var currentTimeLabel: UILabel!
     private var maxTimeLabel: UILabel!
+    private var refreshControl:UIRefreshControl!
     
     /// An array of `Asset` objects representing the m4a files used for playback in this sample.
     var assets = [Asset]()
@@ -82,9 +83,21 @@ class UPViewController: UIViewController {
         maxTimeLabel.autoresizingMask = .flexibleLeftMargin
         self.view.addSubview(maxTimeLabel)
         
+        playButton = UIButton(type:.custom)
+        playButton.setTitle("▶︎", for: .normal)
+        playButton.frame = CGRect(x: self.view.frame.size.width - 120, y: barHeight+5, width: 30, height: 30)
+        playButton.backgroundColor = .clear
+        playButton.tintColor = .white
+        playButton.layer.masksToBounds = true
+        playButton.layer.cornerRadius = 15
+        playButton.layer.borderWidth = 1
+        playButton.layer.borderColor = UIColor.white.cgColor
+        playButton.addTarget(self, action: #selector(playButton(sender:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(playButton)
+        
         repeatButton = UIButton(type:.custom)
-        repeatButton.setTitle("R", for: .normal)
-        repeatButton.frame = CGRect(x: self.view.frame.size.width - 120, y: barHeight+5, width: 30, height: 30)
+        repeatButton.setImage(UIImage(named: "repeat_.png"), for: .normal)
+        repeatButton.frame = CGRect(x: self.view.frame.size.width - 80, y: barHeight+5, width: 30, height: 30)
         repeatButton.backgroundColor = .clear
         repeatButton.tintColor = .white
         repeatButton.layer.masksToBounds = true
@@ -94,20 +107,8 @@ class UPViewController: UIViewController {
         repeatButton.addTarget(self, action: #selector(repeatButton(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(repeatButton)
         
-        resetButton = UIButton(type:.custom)
-        resetButton.setTitle("O", for: .normal)
-        resetButton.frame = CGRect(x: self.view.frame.size.width - 80, y: barHeight+5, width: 30, height: 30)
-        resetButton.backgroundColor = .clear
-        resetButton.tintColor = .white
-        resetButton.layer.masksToBounds = true
-        resetButton.layer.cornerRadius = 15
-        resetButton.layer.borderWidth = 1
-        resetButton.layer.borderColor = UIColor.white.cgColor
-        resetButton.addTarget(self, action: #selector(resetPlaylistButton(sender:)), for: UIControlEvents.touchUpInside)
-        self.view.addSubview(resetButton)
-        
         plusButton = UIButton(type:.custom)
-        plusButton.setTitle("+", for: .normal)
+        plusButton.setTitle("＋", for: .normal)
         plusButton.frame = CGRect(x: self.view.frame.size.width - 40, y: barHeight+5, width: 30, height: 30)
         plusButton.backgroundColor = .clear
         plusButton.tintColor = .white
@@ -128,6 +129,10 @@ class UPViewController: UIViewController {
         myTableView.delegate = self
         self.view.addSubview(myTableView)
         
+        refreshControl = UIRefreshControl()
+        refreshControl.attributedTitle = NSAttributedString(string: "引っ張って更新")
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+        myTableView.addSubview(refreshControl)
         
         self.loadPlayList()
         
@@ -165,17 +170,19 @@ class UPViewController: UIViewController {
         var frameRect: CGRect = self.view.bounds
         // 向きの判定.
         if UIDeviceOrientationIsLandscape(deviceOrientation) {
-            resetButton.alpha = 0.0
+            playButton.alpha = 0.0
             plusButton.alpha = 0.0
             repeatButton.alpha = 0.0
+            seekBar.alpha = 0.0
         } else {//if UIDeviceOrientationIsPortrait(deviceOrientation){
             frameRect = CGRect(x:0,
                                y:barHeight,
                                width:playerSizeWidth,
                                height:playerSizeWidth)
-            resetButton.alpha = 1.0
+            playButton.alpha = 1.0
             plusButton.alpha = 1.0
             repeatButton.alpha = 1.0
+            seekBar.alpha = 1.0
         }
         
         for layer: CALayer in self.view.layer.sublayers! {
@@ -189,15 +196,20 @@ class UPViewController: UIViewController {
     @objc func repeatButton(sender : UIButton) {
         assetPlaybackManager.oneRepeat = !assetPlaybackManager.oneRepeat
         if assetPlaybackManager.oneRepeat {
-            sender.backgroundColor = .lightGray
+            sender.setImage(UIImage(named: "repeat.jpg"), for: .normal)
         } else {
-            sender.backgroundColor = .clear
+            sender.setImage(UIImage(named: "repeat_.png"), for: .normal)
         }
     }
     
-    @objc func resetPlaylistButton(sender : UIButton) {
-        self.resetPlaylist()
-        self.myTableView.reloadData()
+    @objc func playButton(sender : UIButton) {
+        if assetPlaybackManager.state == .playing {
+            sender.setTitle("■", for: .normal)
+            assetPlaybackManager.pause()
+        } else {
+            sender.setTitle("▶︎", for: .normal)
+            assetPlaybackManager.play()
+        }
     }
     
     @objc func addPlaylistButton(sender : UIButton){
@@ -220,6 +232,11 @@ class UPViewController: UIViewController {
         player.seek(to: CMTimeMakeWithSeconds(Float64(seekBar.value), Int32(NSEC_PER_SEC)))
     }
     
+    @objc func refresh() {
+        self.resetPlaylist()
+        self.myTableView.reloadData()
+        refreshControl.endRefreshing()
+    }
     
     func playMusic() {
         let asset = assets[selectRow]
@@ -477,7 +494,7 @@ extension UPViewController : UITableViewDataSource {
         if selectRow > 0 {
             return "LIST (\(selectRow+1) / \(assets.count))"
         } else {
-            return "0"
+            return "↓引っぱってリストを更新"
         }
     }
     
