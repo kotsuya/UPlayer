@@ -28,7 +28,6 @@ class UPViewController: UIViewController {
     
     private var currentTimeLabel: UILabel!
     private var maxTimeLabel: UILabel!
-    private var bottomToolbar: UIToolbar!
     
     /// An array of `Asset` objects representing the m4a files used for playback in this sample.
     var assets = [Asset]()
@@ -56,15 +55,14 @@ class UPViewController: UIViewController {
         playerLayer.frame = CGRect(x:0, y:barHeight, width:playerSizeWidth, height:playerSizeWidth)
         self.view.layer.addSublayer(playerLayer)
         
-        
-        seekBar = UISlider(frame: CGRect(x: 0, y: 0, width: self.view.bounds.maxX - 100, height: 50))
-        seekBar.layer.position = CGPoint(x: self.view.bounds.midX, y: 20)
+        seekBar = UISlider(frame: CGRect(x: 50, y: barHeight+playerSizeWidth-40, width: self.view.bounds.maxX - 100, height: 50))
         seekBar.autoresizingMask = .flexibleWidth
         seekBar.minimumValue = 0
         seekBar.maximumValue = 0
         seekBar.addTarget(self, action: #selector(onSliderValueChange(sender:)), for: .valueChanged)
+        self.view.addSubview(seekBar)
         
-        currentTimeLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
+        currentTimeLabel = UILabel(frame: CGRect(x: 0, y: barHeight+playerSizeWidth-35, width: 50, height: 40))
         currentTimeLabel.backgroundColor = .clear
         currentTimeLabel.font = UIFont.systemFont(ofSize: 10)
         currentTimeLabel.textColor = .white
@@ -72,8 +70,9 @@ class UPViewController: UIViewController {
         currentTimeLabel.textAlignment = .center
         currentTimeLabel.text = "00:00"
         currentTimeLabel.autoresizingMask = .flexibleRightMargin
+        self.view.addSubview(currentTimeLabel)
         
-        maxTimeLabel = UILabel(frame: CGRect(x: self.view.bounds.width - 50, y: 0, width: 50, height: 40))
+        maxTimeLabel = UILabel(frame: CGRect(x: self.view.bounds.width - 50, y: barHeight+playerSizeWidth-35, width: 50, height: 40))
         maxTimeLabel.backgroundColor = .clear
         maxTimeLabel.font = UIFont.systemFont(ofSize: 10)
         maxTimeLabel.textColor = .white
@@ -81,6 +80,7 @@ class UPViewController: UIViewController {
         maxTimeLabel.textAlignment = .center
         maxTimeLabel.text = "00:00"
         maxTimeLabel.autoresizingMask = .flexibleLeftMargin
+        self.view.addSubview(maxTimeLabel)
         
         repeatButton = UIButton(type:.custom)
         repeatButton.setTitle("R", for: .normal)
@@ -117,20 +117,7 @@ class UPViewController: UIViewController {
         plusButton.layer.borderColor = UIColor.white.cgColor
         plusButton.addTarget(self, action: #selector(addPlaylistButton(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(plusButton)
-        
-        let flexibleItem = UIBarButtonItem(barButtonSystemItem: .fixedSpace, target: nil, action: nil)
-        flexibleItem.width = 20
-        
-        bottomToolbar = UIToolbar(frame: CGRect(x:0, y:barHeight+playerSizeWidth-40, width:self.view.bounds.size.width, height:40.0))
-        bottomToolbar.barStyle = .blackTranslucent
-        bottomToolbar.tintColor = UIColor.white
-        bottomToolbar.backgroundColor = .black
-        bottomToolbar.autoresizingMask = .flexibleWidth
-        bottomToolbar.addSubview(seekBar)
-        bottomToolbar.addSubview(currentTimeLabel)
-        bottomToolbar.addSubview(maxTimeLabel)
-        self.view.addSubview(bottomToolbar)
-        
+   
         // TableViewの生成する(status barの高さ分ずらして表示).
         myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+playerSizeWidth, width: displayWidth, height: displayHeight - (barHeight+playerSizeWidth)))
         
@@ -466,7 +453,7 @@ class UPViewController: UIViewController {
 extension UPViewController : UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if selectRow == indexPath.row {
+        if selectRow == indexPath.row, assetPlaybackManager.state == .playing {
             return
         }
         selectRow = indexPath.row

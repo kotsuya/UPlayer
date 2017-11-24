@@ -13,6 +13,7 @@
 		E16B070E1FC54AC20051A296 /* 456.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B070D1FC54AC20051A296 /* 456.mov */; };
 		E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07111FC54C2C0051A296 /* withoutu.mov */; };
 		E16B07141FC54D420051A296 /* likeit.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07131FC54D420051A296 /* likeit.mov */; };
+		E16B07151FC553340051A296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C4D0C91F726C080036E73E /* Assets.xcassets */; };
 		E16CA7691F7CD236005844A4 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA7681F7CD236005844A4 /* Asset.swift */; };
 		E16CA76B1F7CD26E005844A4 /* AssetPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76A1F7CD26E005844A4 /* AssetPlaybackManager.swift */; };
 		E16CA76D1F7CD29B005844A4 /* RemoteCommandDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76C1F7CD29B005844A4 /* RemoteCommandDataSource.swift */; };
@@ -173,6 +174,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E16B07151FC553340051A296 /* Assets.xcassets in Resources */,
 				E12275931F8EFB4E0002E66E /* asif.m4v in Resources */,
 				E16B070E1FC54AC20051A296 /* 456.mov in Resources */,
 				E12275951F8EFB530002E66E /* suki.m4v in Resources */,
