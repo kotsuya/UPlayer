@@ -20,6 +20,7 @@ class UPViewController: UIViewController {
     private let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
     
     var playerSizeWidth:CGFloat = 0.0
+    var playerSizeHeight:CGFloat = 0.0
     
     private var seekBar : UISlider!
     private var playButton: UIButton! = nil
@@ -48,79 +49,55 @@ class UPViewController: UIViewController {
         let displayHeight: CGFloat = self.view.frame.height
         
         playerSizeWidth = self.view.bounds.size.width
+        playerSizeHeight = playerSizeWidth - 40
         
         let player = assetPlaybackManager.player
         let playerLayer = AVPlayerLayer(player: player)
         playerLayer.backgroundColor = UIColor.black.cgColor
         playerLayer.name = "PlayLayer"
-        playerLayer.frame = CGRect(x:0, y:barHeight, width:playerSizeWidth, height:playerSizeWidth)
+        playerLayer.frame = CGRect(x:0, y:barHeight, width:playerSizeWidth, height:playerSizeHeight)
         self.view.layer.addSublayer(playerLayer)
         
-        seekBar = UISlider(frame: CGRect(x: 50, y: barHeight+playerSizeWidth-40, width: self.view.bounds.maxX - 100, height: 50))
+        seekBar = UISlider(frame: CGRect(x: 50, y: barHeight+playerSizeHeight-40, width: self.view.bounds.maxX - 100, height: 50))
         seekBar.autoresizingMask = .flexibleWidth
         seekBar.minimumValue = 0
         seekBar.maximumValue = 0
         seekBar.addTarget(self, action: #selector(onSliderValueChange(sender:)), for: .valueChanged)
         self.view.addSubview(seekBar)
         
-        currentTimeLabel = UILabel(frame: CGRect(x: 0, y: barHeight+playerSizeWidth-35, width: 50, height: 40))
-        currentTimeLabel.backgroundColor = .clear
-        currentTimeLabel.font = UIFont.systemFont(ofSize: 10)
-        currentTimeLabel.textColor = .white
-        currentTimeLabel.shadowColor = .gray
-        currentTimeLabel.textAlignment = .center
-        currentTimeLabel.text = "00:00"
+        currentTimeLabel = UILabel(frame: CGRect(x: 0, y: barHeight+playerSizeHeight-35, width: 50, height: 40))
+        currentTimeLabel.setupLabel()
         currentTimeLabel.autoresizingMask = .flexibleRightMargin
         self.view.addSubview(currentTimeLabel)
         
-        maxTimeLabel = UILabel(frame: CGRect(x: self.view.bounds.width - 50, y: barHeight+playerSizeWidth-35, width: 50, height: 40))
-        maxTimeLabel.backgroundColor = .clear
-        maxTimeLabel.font = UIFont.systemFont(ofSize: 10)
-        maxTimeLabel.textColor = .white
-        maxTimeLabel.shadowColor = .gray
-        maxTimeLabel.textAlignment = .center
-        maxTimeLabel.text = "00:00"
+        maxTimeLabel = UILabel(frame: CGRect(x: self.view.bounds.width - 50, y: barHeight+playerSizeHeight-35, width: 50, height: 40))
+        maxTimeLabel.setupLabel()
         maxTimeLabel.autoresizingMask = .flexibleLeftMargin
         self.view.addSubview(maxTimeLabel)
         
         playButton = UIButton(type:.custom)
         playButton.setTitle("▶︎", for: .normal)
+        playButton.setupBtn()
         playButton.frame = CGRect(x: self.view.frame.size.width - 120, y: barHeight+5, width: 30, height: 30)
-        playButton.backgroundColor = .clear
-        playButton.tintColor = .white
-        playButton.layer.masksToBounds = true
-        playButton.layer.cornerRadius = 15
-        playButton.layer.borderWidth = 1
-        playButton.layer.borderColor = UIColor.white.cgColor
         playButton.addTarget(self, action: #selector(playButton(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(playButton)
         
         repeatButton = UIButton(type:.custom)
         repeatButton.setImage(UIImage(named: "repeat_.png"), for: .normal)
+        repeatButton.setupBtn()
         repeatButton.frame = CGRect(x: self.view.frame.size.width - 80, y: barHeight+5, width: 30, height: 30)
-        repeatButton.backgroundColor = .clear
-        repeatButton.tintColor = .white
-        repeatButton.layer.masksToBounds = true
-        repeatButton.layer.cornerRadius = 15
-        repeatButton.layer.borderWidth = 1
-        repeatButton.layer.borderColor = UIColor.white.cgColor
         repeatButton.addTarget(self, action: #selector(repeatButton(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(repeatButton)
         
         plusButton = UIButton(type:.custom)
         plusButton.setTitle("＋", for: .normal)
+        plusButton.setupBtn()
         plusButton.frame = CGRect(x: self.view.frame.size.width - 40, y: barHeight+5, width: 30, height: 30)
-        plusButton.backgroundColor = .clear
-        plusButton.tintColor = .white
-        plusButton.layer.masksToBounds = true
-        plusButton.layer.cornerRadius = 15
-        plusButton.layer.borderWidth = 1
-        plusButton.layer.borderColor = UIColor.white.cgColor
         plusButton.addTarget(self, action: #selector(addPlaylistButton(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(plusButton)
    
         // TableViewの生成する(status barの高さ分ずらして表示).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+playerSizeWidth, width: displayWidth, height: displayHeight - (barHeight+playerSizeWidth)))
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight+playerSizeHeight, width: displayWidth, height: displayHeight - (barHeight+playerSizeHeight)))
         
         // Cell名の登録をおこなう.
         myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
@@ -174,15 +151,21 @@ class UPViewController: UIViewController {
             plusButton.alpha = 0.0
             repeatButton.alpha = 0.0
             seekBar.alpha = 0.0
+            currentTimeLabel.alpha = 0.0
+            maxTimeLabel.alpha = 0.0
+            myTableView.alpha = 0.0
         } else {//if UIDeviceOrientationIsPortrait(deviceOrientation){
             frameRect = CGRect(x:0,
                                y:barHeight,
                                width:playerSizeWidth,
-                               height:playerSizeWidth)
+                               height:playerSizeHeight)
             playButton.alpha = 1.0
             plusButton.alpha = 1.0
             repeatButton.alpha = 1.0
             seekBar.alpha = 1.0
+            currentTimeLabel.alpha = 1.0
+            maxTimeLabel.alpha = 1.0
+            myTableView.alpha = 1.0
         }
         
         for layer: CALayer in self.view.layer.sublayers! {

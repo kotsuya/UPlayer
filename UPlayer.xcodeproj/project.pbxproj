@@ -10,6 +10,8 @@
 		E10653D71F72436500EC995F /* list.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D401F723E2D0041B69C /* list.plist */; };
 		E12275931F8EFB4E0002E66E /* asif.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E12275911F8EFAD70002E66E /* asif.m4v */; };
 		E12275951F8EFB530002E66E /* suki.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E12275901F8EFAD70002E66E /* suki.m4v */; };
+		E1323F661FCEA2A300436F54 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1323F641FCEA2A300436F54 /* UILabel+extension.swift */; };
+		E1323F671FCEA2A300436F54 /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1323F651FCEA2A300436F54 /* UIButton+extension.swift */; };
 		E16B070E1FC54AC20051A296 /* 456.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B070D1FC54AC20051A296 /* 456.mov */; };
 		E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07111FC54C2C0051A296 /* withoutu.mov */; };
 		E16B07141FC54D420051A296 /* likeit.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07131FC54D420051A296 /* likeit.mov */; };
@@ -27,6 +29,8 @@
 /* Begin PBXFileReference section */
 		E12275901F8EFAD70002E66E /* suki.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = suki.m4v; sourceTree = "<group>"; };
 		E12275911F8EFAD70002E66E /* asif.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = asif.m4v; sourceTree = "<group>"; };
+		E1323F641FCEA2A300436F54 /* UILabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
+		E1323F651FCEA2A300436F54 /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
 		E16B070D1FC54AC20051A296 /* 456.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 456.mov; sourceTree = "<group>"; };
 		E16B07111FC54C2C0051A296 /* withoutu.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = withoutu.mov; sourceTree = "<group>"; };
 		E16B07131FC54D420051A296 /* likeit.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = likeit.mov; sourceTree = "<group>"; };
@@ -55,6 +59,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E1323F631FCEA2A300436F54 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				E1323F641FCEA2A300436F54 /* UILabel+extension.swift */,
+				E1323F651FCEA2A300436F54 /* UIButton+extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		E16CA7701F7CD2E0005844A4 /* AppleSampleFile */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +98,7 @@
 		E1CA2CFC1F723A2C0041B69C /* UPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				E1323F631FCEA2A300436F54 /* Extension */,
 				E16CA7701F7CD2E0005844A4 /* AppleSampleFile */,
 				E1CA2D411F723E4C0041B69C /* Resources */,
 				E1CA2CFD1F723A2C0041B69C /* AppDelegate.swift */,
@@ -198,7 +212,9 @@
 				E16CA76D1F7CD29B005844A4 /* RemoteCommandDataSource.swift in Sources */,
 				E1CA2D001F723A2C0041B69C /* UPViewController.swift in Sources */,
 				E1CA2CFE1F723A2C0041B69C /* AppDelegate.swift in Sources */,
+				E1323F671FCEA2A300436F54 /* UIButton+extension.swift in Sources */,
 				E16CA76B1F7CD26E005844A4 /* AssetPlaybackManager.swift in Sources */,
+				E1323F661FCEA2A300436F54 /* UILabel+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
