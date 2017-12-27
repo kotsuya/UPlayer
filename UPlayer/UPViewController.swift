@@ -142,11 +142,12 @@ class UPViewController: UIViewController {
     
     @objc func rotated(notification: NSNotification) {
         // 現在のデバイスの向きを取得.
-        let deviceOrientation: UIDeviceOrientation!  = UIDevice.current.orientation
+        //let deviceOrientation: UIDeviceOrientation!  = UIDevice.current.orientation
         
         var frameRect: CGRect = self.view.bounds
         // 向きの判定.
-        if UIDeviceOrientationIsLandscape(deviceOrientation) {
+        //if UIDeviceOrientationIsLandscape(deviceOrientation) {
+        if UPUtilities.isDeviceLandscape() {
             playButton.alpha = 0.0
             plusButton.alpha = 0.0
             repeatButton.alpha = 0.0

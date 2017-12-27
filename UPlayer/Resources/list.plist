@@ -4,16 +4,6 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>마지막처럼</string>
-		<key>artist</key>
-		<string>BlackPink</string>
-		<key>fileName</key>
-		<string>asif.m4v</string>
-		<key>description</key>
-		<string>I love Lisa!!</string>
-	</dict>
-	<dict>
-		<key>title</key>
 		<string>#好きなんだ</string>
 		<key>artist</key>
 		<string>AKB48</string>
@@ -44,11 +34,31 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>좋니</string>
+		<string>남자를 몰라</string>
 		<key>artist</key>
-		<string>윤종신</string>
+		<string>버즈</string>
 		<key>fileName</key>
-		<string>likeit.mov</string>
+		<string>know.m4v</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>꽃</string>
+		<key>artist</key>
+		<string>G,고릴라</string>
+		<key>fileName</key>
+		<string>flower.m4v</string>
+		<key>description</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>title</key>
+		<string>How do you feel now</string>
+		<key>artist</key>
+		<string>AmuroNamie</string>
+		<key>fileName</key>
+		<string>howdoyoufeelnow.m4v</string>
 		<key>description</key>
 		<string></string>
 	</dict>
