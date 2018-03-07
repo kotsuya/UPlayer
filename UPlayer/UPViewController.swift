@@ -76,7 +76,8 @@ class UPViewController: UIViewController {
         self.view.addSubview(maxTimeLabel)
         
         playButton = UIButton(type:.custom)
-        playButton.setTitle("▶︎", for: .normal)
+        //playButton.setTitle("▶︎", for: .normal)
+        playButton.setTitle("■", for: .normal)
         playButton.setupBtn()
         playButton.frame = CGRect(x: self.view.frame.size.width - 120, y: barHeight+5, width: 30, height: 30)
         playButton.addTarget(self, action: #selector(playButton(sender:)), for: UIControlEvents.touchUpInside)
@@ -188,10 +189,10 @@ class UPViewController: UIViewController {
     
     @objc func playButton(sender : UIButton) {
         if assetPlaybackManager.state == .playing {
-            sender.setTitle("■", for: .normal)
+            sender.setTitle("▶︎", for: .normal)
             assetPlaybackManager.pause()
         } else {
-            sender.setTitle("▶︎", for: .normal)
+            sender.setTitle("■", for: .normal)
             assetPlaybackManager.play()
         }
     }
@@ -287,7 +288,7 @@ class UPViewController: UIViewController {
         
         assets = enumerator.flatMap { element in
             guard let url = element as? URL, let list = list else { return nil }            
-            if url.pathExtension != "m4v" && url.pathExtension != "mov" { return nil }
+            if url.pathExtension != "m4v" && url.pathExtension != "mov" && url.pathExtension != "mp4" { return nil }
             
             let value = url.lastPathComponent
             let dict = (list as Array).first(where: { $0["fileName"] as? String == value })
@@ -309,7 +310,9 @@ class UPViewController: UIViewController {
             guard let url = element as? URL else { return }
             
             if url.pathExtension == "MOV" {
-                self.assets.append(Asset(assetName: url.lastPathComponent, urlAsset: AVURLAsset(url: url), albumName: "Unknown"))
+                let name = url.lastPathComponent.split(separator:".")[0]
+                let artist = url.lastPathComponent.split(separator:".")[1]
+                self.assets.append(Asset(assetName: String(name), urlAsset: AVURLAsset(url: url), albumName: String(artist)))
             }
         }
     }
@@ -369,6 +372,17 @@ class UPViewController: UIViewController {
             assets.append(Asset(assetName: title, urlAsset: AVURLAsset(url: url), albumName: artist))
         } else {
             assets[editMode] = Asset(assetName: title, urlAsset: AVURLAsset(url: url), albumName: artist)
+            
+            if FileManager.default.fileExists(atPath: url.path) {
+                // url.setTemporaryResourceValue("\(title).\(url.lastPathComponent)", forKey: .nameKey)
+                do {
+                    let tempDirectoryURL = NSURL.fileURL(withPath: self.documentPath(), isDirectory: true)
+                    let targetURL = tempDirectoryURL.appendingPathComponent("\(title).\(artist).\(url.pathExtension)")
+                    try FileManager.default.moveItem(at: url, to: targetURL)
+                } catch {
+                    print(error)
+                }
+            }
         }
         
         myTableView.reloadData()
@@ -470,6 +484,19 @@ extension UPViewController : UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
+        let asset = assets[indexPath.row]
+        
+        let tempDirectoryURL = NSURL.fileURL(withPath: self.documentPath(), isDirectory: true)
+        let targetURL = tempDirectoryURL.appendingPathComponent("\(asset.assetName)")
+        
+        if FileManager.default.fileExists(atPath: targetURL.path) {
+            do {
+                 try FileManager.default.removeItem(at: targetURL)
+            } catch {
+                
+            }
+        }
+        
         self.assets.remove(at: indexPath.row)
         tableView.reloadData()
     }
@@ -504,15 +531,15 @@ extension UPViewController : UITableViewDataSource {
             cell.textLabel?.textColor = .black
         }
         
-        if let img = UIImage(named: "edit") {
+        //if cell.accessoryView == nil {
             let editButton = UIButton(type: .custom) as UIButton
-            editButton.frame = CGRect(x: 0, y: 0, width: (img.size.width)/2, height: (img.size.height)/2)
-            editButton.setImage(img, for: .normal)
-            editButton.tintColor = UIColor.darkGray
+            editButton.frame = CGRect(x: 0, y: 0, width: 60, height: cell.frame.size.height)
+            editButton.setTitle("edit", for: .normal)
+            editButton.setTitleColor(.darkGray, for: .normal)
             editButton.addTarget(self, action: #selector(accessoryButtonTapped(sender:)), for: UIControlEvents.touchUpInside)
             editButton.tag = indexPath.row
             cell.accessoryView = editButton as UIView
-        }
+        //}
         
         return cell
     }

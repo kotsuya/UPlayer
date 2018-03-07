@@ -8,20 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		E10653D71F72436500EC995F /* list.plist in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D401F723E2D0041B69C /* list.plist */; };
-		E12275951F8EFB530002E66E /* suki.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E12275901F8EFAD70002E66E /* suki.m4v */; };
+		E12C07DE203FD4B000E80ECE /* _yuki_jp.mov in Resources */ = {isa = PBXBuildFile; fileRef = E12C07D8203FD4B000E80ECE /* _yuki_jp.mov */; };
+		E12C07E0203FD4B000E80ECE /* _yuki_kr.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E12C07DA203FD4B000E80ECE /* _yuki_kr.mp4 */; };
+		E12C07E2203FD4B000E80ECE /* _ho_kr.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = E12C07DC203FD4B000E80ECE /* _ho_kr.mp4 */; };
+		E12C07E3203FD4B000E80ECE /* _sho_jp.mov in Resources */ = {isa = PBXBuildFile; fileRef = E12C07DD203FD4B000E80ECE /* _sho_jp.mov */; };
 		E1323F661FCEA2A300436F54 /* UILabel+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1323F641FCEA2A300436F54 /* UILabel+extension.swift */; };
 		E1323F671FCEA2A300436F54 /* UIButton+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1323F651FCEA2A300436F54 /* UIButton+extension.swift */; };
-		E167DD121FF3681F00E0EBFC /* howdoyoufeelnow.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E167DD111FF3681F00E0EBFC /* howdoyoufeelnow.m4v */; };
 		E167DD141FF3699000E0EBFC /* UPUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = E167DD131FF3699000E0EBFC /* UPUtilities.swift */; };
-		E16B070E1FC54AC20051A296 /* 456.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B070D1FC54AC20051A296 /* 456.mov */; };
-		E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */ = {isa = PBXBuildFile; fileRef = E16B07111FC54C2C0051A296 /* withoutu.mov */; };
 		E16B07151FC553340051A296 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1C4D0C91F726C080036E73E /* Assets.xcassets */; };
 		E16CA7691F7CD236005844A4 /* Asset.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA7681F7CD236005844A4 /* Asset.swift */; };
 		E16CA76B1F7CD26E005844A4 /* AssetPlaybackManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76A1F7CD26E005844A4 /* AssetPlaybackManager.swift */; };
 		E16CA76D1F7CD29B005844A4 /* RemoteCommandDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76C1F7CD29B005844A4 /* RemoteCommandDataSource.swift */; };
 		E16CA76F1F7CD2BB005844A4 /* RemoteCommandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16CA76E1F7CD2BB005844A4 /* RemoteCommandManager.swift */; };
-		E16D51411FE372D100DC5171 /* flower.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E16D513F1FE372D000DC5171 /* flower.m4v */; };
-		E16D51421FE372D100DC5171 /* know.m4v in Resources */ = {isa = PBXBuildFile; fileRef = E16D51401FE372D000DC5171 /* know.m4v */; };
+		E1744A1F2046A008005D4DCB /* _ho_jp.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1744A1E2046A008005D4DCB /* _ho_jp.mov */; };
+		E1744A212046A1D2005D4DCB /* _sho_kr.mov in Resources */ = {isa = PBXBuildFile; fileRef = E1744A202046A1D1005D4DCB /* _sho_kr.mov */; };
 		E1CA2CFE1F723A2C0041B69C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA2CFD1F723A2C0041B69C /* AppDelegate.swift */; };
 		E1CA2D001F723A2C0041B69C /* UPViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA2CFF1F723A2C0041B69C /* UPViewController.swift */; };
 		E1CA2D031F723A2C0041B69C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1CA2D011F723A2C0041B69C /* Main.storyboard */; };
@@ -29,19 +29,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E12275901F8EFAD70002E66E /* suki.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = suki.m4v; sourceTree = "<group>"; };
+		E12C07D8203FD4B000E80ECE /* _yuki_jp.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = _yuki_jp.mov; sourceTree = "<group>"; };
+		E12C07DA203FD4B000E80ECE /* _yuki_kr.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = _yuki_kr.mp4; sourceTree = "<group>"; };
+		E12C07DC203FD4B000E80ECE /* _ho_kr.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = _ho_kr.mp4; sourceTree = "<group>"; };
+		E12C07DD203FD4B000E80ECE /* _sho_jp.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = _sho_jp.mov; sourceTree = "<group>"; };
 		E1323F641FCEA2A300436F54 /* UILabel+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+extension.swift"; sourceTree = "<group>"; };
 		E1323F651FCEA2A300436F54 /* UIButton+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+extension.swift"; sourceTree = "<group>"; };
-		E167DD111FF3681F00E0EBFC /* howdoyoufeelnow.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = howdoyoufeelnow.m4v; sourceTree = "<group>"; };
 		E167DD131FF3699000E0EBFC /* UPUtilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UPUtilities.swift; sourceTree = "<group>"; };
-		E16B070D1FC54AC20051A296 /* 456.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = 456.mov; sourceTree = "<group>"; };
-		E16B07111FC54C2C0051A296 /* withoutu.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = withoutu.mov; sourceTree = "<group>"; };
 		E16CA7681F7CD236005844A4 /* Asset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Asset.swift; sourceTree = "<group>"; };
 		E16CA76A1F7CD26E005844A4 /* AssetPlaybackManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssetPlaybackManager.swift; sourceTree = "<group>"; };
 		E16CA76C1F7CD29B005844A4 /* RemoteCommandDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommandDataSource.swift; sourceTree = "<group>"; };
 		E16CA76E1F7CD2BB005844A4 /* RemoteCommandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteCommandManager.swift; sourceTree = "<group>"; };
-		E16D513F1FE372D000DC5171 /* flower.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = flower.m4v; sourceTree = "<group>"; };
-		E16D51401FE372D000DC5171 /* know.m4v */ = {isa = PBXFileReference; lastKnownFileType = file; path = know.m4v; sourceTree = "<group>"; };
+		E1744A1E2046A008005D4DCB /* _ho_jp.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = _ho_jp.mov; sourceTree = "<group>"; };
+		E1744A202046A1D1005D4DCB /* _sho_kr.mov */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = _sho_kr.mov; sourceTree = "<group>"; };
 		E1C4D0C91F726C080036E73E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1CA2CFA1F723A2C0041B69C /* UPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1CA2CFD1F723A2C0041B69C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -107,11 +107,11 @@
 				E1CA2D411F723E4C0041B69C /* Resources */,
 				E1CA2CFD1F723A2C0041B69C /* AppDelegate.swift */,
 				E1CA2CFF1F723A2C0041B69C /* UPViewController.swift */,
+				E167DD131FF3699000E0EBFC /* UPUtilities.swift */,
 				E1CA2D011F723A2C0041B69C /* Main.storyboard */,
 				E1CA2D061F723A2C0041B69C /* LaunchScreen.storyboard */,
 				E1C4D0C91F726C080036E73E /* Assets.xcassets */,
 				E1CA2D091F723A2C0041B69C /* Info.plist */,
-				E167DD131FF3699000E0EBFC /* UPUtilities.swift */,
 			);
 			path = UPlayer;
 			sourceTree = "<group>";
@@ -119,12 +119,12 @@
 		E1CA2D411F723E4C0041B69C /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				E167DD111FF3681F00E0EBFC /* howdoyoufeelnow.m4v */,
-				E16D513F1FE372D000DC5171 /* flower.m4v */,
-				E16D51401FE372D000DC5171 /* know.m4v */,
-				E16B07111FC54C2C0051A296 /* withoutu.mov */,
-				E16B070D1FC54AC20051A296 /* 456.mov */,
-				E12275901F8EFAD70002E66E /* suki.m4v */,
+				E1744A1E2046A008005D4DCB /* _ho_jp.mov */,
+				E12C07DC203FD4B000E80ECE /* _ho_kr.mp4 */,
+				E12C07DD203FD4B000E80ECE /* _sho_jp.mov */,
+				E1744A202046A1D1005D4DCB /* _sho_kr.mov */,
+				E12C07D8203FD4B000E80ECE /* _yuki_jp.mov */,
+				E12C07DA203FD4B000E80ECE /* _yuki_kr.mp4 */,
 				E1CA2D401F723E2D0041B69C /* list.plist */,
 			);
 			path = Resources;
@@ -194,16 +194,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E167DD121FF3681F00E0EBFC /* howdoyoufeelnow.m4v in Resources */,
+				E12C07E3203FD4B000E80ECE /* _sho_jp.mov in Resources */,
+				E12C07DE203FD4B000E80ECE /* _yuki_jp.mov in Resources */,
+				E1744A212046A1D2005D4DCB /* _sho_kr.mov in Resources */,
 				E16B07151FC553340051A296 /* Assets.xcassets in Resources */,
-				E16B070E1FC54AC20051A296 /* 456.mov in Resources */,
-				E12275951F8EFB530002E66E /* suki.m4v in Resources */,
-				E16D51421FE372D100DC5171 /* know.m4v in Resources */,
+				E12C07E0203FD4B000E80ECE /* _yuki_kr.mp4 in Resources */,
 				E10653D71F72436500EC995F /* list.plist in Resources */,
+				E1744A1F2046A008005D4DCB /* _ho_jp.mov in Resources */,
 				E1CA2D081F723A2C0041B69C /* LaunchScreen.storyboard in Resources */,
-				E16B07121FC54C2C0051A296 /* withoutu.mov in Resources */,
-				E16D51411FE372D100DC5171 /* flower.m4v in Resources */,
 				E1CA2D031F723A2C0041B69C /* Main.storyboard in Resources */,
+				E12C07E2203FD4B000E80ECE /* _ho_kr.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -347,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";

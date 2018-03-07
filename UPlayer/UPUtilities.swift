@@ -10,13 +10,11 @@ import UIKit
 
 class UPUtilities: NSObject {
   
-    static func isIpad() -> Bool
-    {
+    static func isIpad() -> Bool {
         return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.pad)
     }
     
-    static func isIPhone() -> Bool
-    {
+    static func isIPhone() -> Bool {
         return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiom.phone)
     }
     
@@ -31,14 +29,13 @@ class UPUtilities: NSObject {
         return Int(array[0])!
     }
     
-    
     static func isDeviceLandscape() -> Bool {
         switch UIDevice.current.orientation {
         case .portrait:
             return false
         case .landscapeLeft, .landscapeRight:
             return true
-        default:
+        default://unknown, faceUp, faceDown
             return UIScreen.main.bounds.size.width > UIScreen.main.bounds.size.height
         }
     }

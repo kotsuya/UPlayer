@@ -4,61 +4,61 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>#好きなんだ</string>
+		<string>あなたがいれば</string>
 		<key>artist</key>
-		<string>AKB48</string>
+		<string>華原朋美</string>
 		<key>fileName</key>
-		<string>suki.m4v</string>
+		<string>_ho_jp.mov</string>
 		<key>description</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>456</string>
+		<string>ショコラ</string>
 		<key>artist</key>
-		<string>kaneto</string>
+		<string>安全地帯</string>
 		<key>fileName</key>
-		<string>456.mov</string>
+		<string>_sho_jp.mov</string>
 		<key>description</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Without you</string>
+		<string>雪の華</string>
 		<key>artist</key>
-		<string>Yoshiki</string>
+		<string>中島美嘉</string>
 		<key>fileName</key>
-		<string>withoutu.mov</string>
+		<string>_yuki_jp.mov</string>
 		<key>description</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>남자를 몰라</string>
+		<string>그대만 있다면</string>
 		<key>artist</key>
-		<string>버즈</string>
+		<string>러브홀릭</string>
 		<key>fileName</key>
-		<string>know.m4v</string>
+		<string>_ho_kr.mp4</string>
 		<key>description</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>꽃</string>
+		<string>사랑의 시</string>
 		<key>artist</key>
-		<string>G,고릴라</string>
+		<string>MC the Max</string>
 		<key>fileName</key>
-		<string>flower.m4v</string>
+		<string>_sho_kr.mov</string>
 		<key>description</key>
 		<string></string>
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>How do you feel now</string>
+		<string>눈의 꽃</string>
 		<key>artist</key>
-		<string>AmuroNamie</string>
+		<string>박효신</string>
 		<key>fileName</key>
-		<string>howdoyoufeelnow.m4v</string>
+		<string>_yuki_kr.mp4</string>
 		<key>description</key>
 		<string></string>
 	</dict>
