@@ -536,6 +536,7 @@ extension UPViewController : UITableViewDataSource {
             editButton.frame = CGRect(x: 0, y: 0, width: 60, height: cell.frame.size.height)
             editButton.setTitle("edit", for: .normal)
             editButton.setTitleColor(.darkGray, for: .normal)
+            editButton.contentHorizontalAlignment = .right
             editButton.addTarget(self, action: #selector(accessoryButtonTapped(sender:)), for: UIControlEvents.touchUpInside)
             editButton.tag = indexPath.row
             cell.accessoryView = editButton as UIView
