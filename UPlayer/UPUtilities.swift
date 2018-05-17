@@ -19,7 +19,7 @@ class UPUtilities: NSObject {
     }
     
     static func iOSMajorVersion() -> Int {
-        guard let ver:String = UIDevice.current.systemVersion as String! else {
+        guard let ver:String = UIDevice.current.systemVersion as String? else {
             return 0
         }
         let array = ver.components(separatedBy: ".")

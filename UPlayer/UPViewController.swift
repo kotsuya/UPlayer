@@ -286,7 +286,7 @@ class UPViewController: UIViewController {
         
         guard let enumerator = FileManager.default.enumerator(at: Bundle.main.bundleURL, includingPropertiesForKeys: nil, options: [], errorHandler: nil) else { return }
         
-        assets = enumerator.flatMap { element in
+        assets = enumerator.compactMap { element in
             guard let url = element as? URL, let list = list else { return nil }            
             if url.pathExtension != "m4v" && url.pathExtension != "mov" && url.pathExtension != "mp4" { return nil }
             
@@ -296,7 +296,7 @@ class UPViewController: UIViewController {
             let fName = (url.lastPathComponent as NSString).deletingPathExtension
             
             if let uuu = self.copyBundleResourceToTemporaryDirectory(resourceName:fName, fileExtension:url.pathExtension) {
-                print("uuu : \(String(describing: uuu))")
+                //print("uuu : \(String(describing: uuu))")
                 return Asset(assetName: dict?["title"] as! String, urlAsset: AVURLAsset(url: uuu as URL), albumName: dict?["artist"] as! String)
             }
             
